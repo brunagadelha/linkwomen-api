@@ -12,3 +12,4 @@ LinkWomen.Services/obj
 LinkWomen.WebAPI/bin
 LinkWomen.WebAPI/obj
 LinkWomen.WebAPI/connectionStrings.json
+LinkWomen.WebAPI/LinkWomen.WebAPI.csproj.user

@@ -17,7 +17,9 @@ namespace LinkWomen.Services.Services
 
         public void Add(User user)
         {
+            user.UserRole = Domain.Enumerators.UserRoleEnum.Comum; 
             user.CreatedAt = DateTime.Now; 
+
             _userRepository.Add(user); 
         }
 

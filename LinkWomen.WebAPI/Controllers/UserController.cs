@@ -34,8 +34,12 @@ namespace LinkWomen.WebAPI.Controllers
             return _mapper.Map<UserDTO>(user); 
         }
 
+        /// <summary>
+        /// Create a user
+        /// </summary>
+        /// <param name="userDTO"></param>
         [HttpPost]
-        public void Post([FromBody] UserDTO userDTO)
+        public void Post([FromBody] UserCreateDTO userDTO)
         {
             var user = _mapper.Map<User>(userDTO);
             _userService.Add(user); 
