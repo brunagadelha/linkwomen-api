@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkWomen.WebAPI", "LinkWomen.WebAPI\LinkWomen.WebAPI.csproj", "{945E22FF-968F-4FB1-B782-247E011B6B55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkWomen.Domain", "LinkWomen.Domain\LinkWomen.Domain.csproj", "{51FCC985-7052-4AC3-AA16-19BD90C29401}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkWomen.Data", "LinkWomen.Data\LinkWomen.Data.csproj", "{97576551-0E75-420F-B855-1ECAFBE86BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkWomen.Services", "LinkWomen.Services\LinkWomen.Services.csproj", "{2FF57514-6118-411B-9037-652580C785D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{945E22FF-968F-4FB1-B782-247E011B6B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945E22FF-968F-4FB1-B782-247E011B6B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945E22FF-968F-4FB1-B782-247E011B6B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945E22FF-968F-4FB1-B782-247E011B6B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FCC985-7052-4AC3-AA16-19BD90C29401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FCC985-7052-4AC3-AA16-19BD90C29401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FCC985-7052-4AC3-AA16-19BD90C29401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FCC985-7052-4AC3-AA16-19BD90C29401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97576551-0E75-420F-B855-1ECAFBE86BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97576551-0E75-420F-B855-1ECAFBE86BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97576551-0E75-420F-B855-1ECAFBE86BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97576551-0E75-420F-B855-1ECAFBE86BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF57514-6118-411B-9037-652580C785D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF57514-6118-411B-9037-652580C785D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF57514-6118-411B-9037-652580C785D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF57514-6118-411B-9037-652580C785D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75913B25-24B4-4F89-91BF-DB1B272AE441}
+	EndGlobalSection
+EndGlobal

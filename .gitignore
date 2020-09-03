@@ -1,0 +1,14 @@
+.vs
+LinkWomen.Data/bin
+LinkWomen.Data/obj
+LinkWomen.Data/connectionStrings.json
+
+LinkWomen.Domain/bin
+LinkWomen.Domain/obj
+
+LinkWomen.Services/bin
+LinkWomen.Services/obj
+
+LinkWomen.WebAPI/bin
+LinkWomen.WebAPI/obj
+LinkWomen.WebAPI/connectionStrings.json

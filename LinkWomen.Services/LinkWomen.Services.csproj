@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Forum\" />
+    <Folder Include="Services\Event\" />
+    <Folder Include="Services\TechSkill\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LinkWomen.Data\LinkWomen.Data.csproj" />
+    <ProjectReference Include="..\LinkWomen.Domain\LinkWomen.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
