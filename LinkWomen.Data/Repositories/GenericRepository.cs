@@ -27,7 +27,7 @@ namespace LinkWomen.Data.Repositories
             _context.SaveChanges();
         }
 
-        public IQueryable<TEntity> GetAll(int id)
+        public IQueryable<TEntity> GetAll()
         {
             return _context.Set<TEntity>();
         }

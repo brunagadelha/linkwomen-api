@@ -2,6 +2,7 @@
 using LinkWomen.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LinkWomen.Services.Services
@@ -23,9 +24,39 @@ namespace LinkWomen.Services.Services
             _userRepository.Add(user); 
         }
 
+        public void Delete(User user)
+        {
+            user.Deleted = true;
+            _userRepository.Update(user); 
+        }
+
         public User GetById(int id)
         {
             return _userRepository.GetById(id);
+        }
+
+        public User GetByUserName(string userName)
+        {
+            return _userRepository.GetAll().Where(x => x.UserName.Equals(userName)).FirstOrDefault();
+        }
+
+        public IEnumerable<User> GetHighlightedUsers()
+        {
+            return _userRepository.GetAll().Where(x => x.IsHighlighted).AsEnumerable();                                                    
+        }
+
+        public void Update(User user)
+        {
+            user.UpdatedAt = DateTime.Now;
+            _userRepository.Update(user); 
+        }
+
+        public User VerifyUser(string userName, string password)
+        {
+            var user = _userRepository.GetAll()
+                            .Where(x => x.UserName.Equals(userName) && x.PasswordHash.Equals(password)).FirstOrDefault();
+
+            return user; 
         }
     }
 }

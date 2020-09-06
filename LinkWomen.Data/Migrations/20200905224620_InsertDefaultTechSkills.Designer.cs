@@ -4,14 +4,16 @@ using LinkWomen.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinkWomen.Data.Migrations
 {
     [DbContext(typeof(LinkWomenContext))]
-    partial class LinkWomenContextModelSnapshot : ModelSnapshot
+    [Migration("20200905224620_InsertDefaultTechSkills")]
+    partial class InsertDefaultTechSkills
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

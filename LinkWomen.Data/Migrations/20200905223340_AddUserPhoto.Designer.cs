@@ -4,14 +4,16 @@ using LinkWomen.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LinkWomen.Data.Migrations
 {
     [DbContext(typeof(LinkWomenContext))]
-    partial class LinkWomenContextModelSnapshot : ModelSnapshot
+    [Migration("20200905223340_AddUserPhoto")]
+    partial class AddUserPhoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,93 +178,6 @@ namespace LinkWomen.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TechSkills");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "C"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "C++"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "C#"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "JavaScript"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Swift"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Objective-C"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Kotlin"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "React"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Node"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "React Native"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Java"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Ruby"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Go"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Python"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "SQL"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "MySQL"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "MongoDB"
-                        });
                 });
 
             modelBuilder.Entity("LinkWomen.Domain.Models.User", b =>

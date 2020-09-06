@@ -35,10 +35,10 @@ namespace LinkWomen.Data
 
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new TechSkillMap());
-            modelBuilder.ApplyConfiguration(new UserTechSkillMap()); 
+            modelBuilder.ApplyConfiguration(new UserTechSkillMap());
 
-            modelBuilder.ApplyConfiguration(new ForumIssueMap()); 
-            modelBuilder.ApplyConfiguration(new ForumCommentMap()); 
+            modelBuilder.ApplyConfiguration(new ForumIssueMap());
+            modelBuilder.ApplyConfiguration(new ForumCommentMap());
             modelBuilder.ApplyConfiguration(new ForumCategoryMap());
 
             modelBuilder.ApplyConfiguration(new EventMap());

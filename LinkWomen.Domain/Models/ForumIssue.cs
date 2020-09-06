@@ -21,11 +21,11 @@ namespace LinkWomen.Domain.Models
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public ForumCategory Category { get; set; }
 
         public bool Deleted { get; set; }
 
-        public IEnumerable<ForumComment> Comments { get; set; }
+        public virtual List<ForumComment> Comments { get; set; }
     }
 }

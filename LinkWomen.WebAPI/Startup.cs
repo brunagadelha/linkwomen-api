@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using LinkWomen.Data;
@@ -10,7 +11,9 @@ using LinkWomen.Data.Repositories;
 using LinkWomen.Domain.DTOs;
 using LinkWomen.Domain.Models;
 using LinkWomen.Services.Services;
+using LinkWomen.Services.Utils;
 using LinkWomen.WebAPI.AutoMapper.Profiles;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,6 +23,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace LinkWomen.WebAPI
@@ -36,12 +41,14 @@ namespace LinkWomen.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             //AutoMapper
             var mapperConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new EventProfile());
+                mc.AddProfile(new ForumProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();
@@ -49,6 +56,10 @@ namespace LinkWomen.WebAPI
 
             //Dependecy Injection (DI)
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IForumIssueService, ForumIssueService>();
+            services.AddScoped<IForumCommentService, ForumCommentService>();
+            services.AddScoped<IUserConnectionService, UserConnectionService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             //Swagger
@@ -64,6 +75,26 @@ namespace LinkWomen.WebAPI
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 opt.IncludeXmlComments(xmlPath);
+            });
+
+            //JWT
+            var key = Encoding.ASCII.GetBytes(Settings.SecretJWT);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
 
         }
@@ -82,7 +113,11 @@ namespace LinkWomen.WebAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseHttpsRedirection();
 

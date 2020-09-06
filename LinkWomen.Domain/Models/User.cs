@@ -17,6 +17,7 @@ namespace LinkWomen.Domain.Models
         public string Email { get; set; }
         public string Occupation { get; set; }
         public string Bio { get; set; }
+        public string PhotoUrl { get; set; }
         public string UserName { get; set; }
         public string GitHub { get; set; }
         public UserRoleEnum UserRole { get; set; }
@@ -32,8 +33,8 @@ namespace LinkWomen.Domain.Models
         public User Mentor { get; set; }
 
         public IEnumerable<ForumIssue> Issues { get; set; }
-        public IEnumerable<User> Mentorados { get; set; }
+        public IEnumerable<User> Mentorships { get; set; }
         public IEnumerable<UserTechSkill> TechSkills { get; set; }
-        public IEnumerable<UserConnection> Connections { get; set; }
+        public List<UserConnection> Connections { get; set; }
     }
 }

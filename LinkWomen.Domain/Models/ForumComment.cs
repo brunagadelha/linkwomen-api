@@ -7,7 +7,7 @@ namespace LinkWomen.Domain.Models
     public class ForumComment : Entity
     {
         public int ForumIssueId { get; set; }
-        public ForumIssue ForumIssue { get; set; }
+        public virtual ForumIssue ForumIssue { get; set; }
         public int? UserId { get; set; }
         public User User { get; set; }
         public string Comment { get; set; }

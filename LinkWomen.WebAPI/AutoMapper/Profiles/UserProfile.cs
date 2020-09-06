@@ -16,6 +16,9 @@ namespace LinkWomen.WebAPI.AutoMapper.Profiles
                 .ForMember(fm => fm.PasswordHash, mo => mo.MapFrom(x => x.Password));
 
             CreateMap<User, UserDTO>();
+
+            CreateMap<User, UserHighlightedDTO>()
+                .ForMember(fm => fm.UserId, mo => mo.MapFrom(x => x.Id));
         }
     }
 }

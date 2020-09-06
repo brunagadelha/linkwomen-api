@@ -6,8 +6,9 @@ namespace LinkWomen.Domain.Enumerators
 {
     public enum UserRoleEnum
     {
-        Moderator, 
-        Mentor, 
-        Comum
+        Comum = 1,
+        Mentor = 2,
+        Moderator = 3,
+
     }
 }

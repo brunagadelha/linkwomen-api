@@ -8,6 +8,11 @@ namespace LinkWomen.Services.Services
     public interface IUserService
     {
         void Add(User user); 
-        User GetById(int id); 
+        void Update(User user); 
+        void Delete(User user); 
+        User GetById(int id);
+        User GetByUserName(string userName);
+        IEnumerable<User> GetHighlightedUsers();
+        User VerifyUser(string userName, string password); 
     }
 }

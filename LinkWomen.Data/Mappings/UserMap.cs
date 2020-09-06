@@ -25,13 +25,14 @@ namespace LinkWomen.Data.Mappings
             builder.Property(x => x.Deleted).IsRequired();
             builder.Property(x => x.IsHighlighted).IsRequired();
 
-            builder.Property(x => x.Bio).HasMaxLength(1000);
+            builder.Property(x => x.Bio).HasMaxLength(2000);
             builder.Property(x => x.Occupation).HasMaxLength(50);
             builder.Property(x => x.GitHub).HasMaxLength(200);
             builder.Property(x => x.UpdatedAt); 
+            builder.Property(x => x.PhotoUrl).HasMaxLength(200); 
 
             builder.HasOne(x => x.Mentor)
-                .WithMany(m => m.Mentorados)
+                .WithMany(m => m.Mentorships)
                 .HasForeignKey(x => x.MentorId); 
             
         }
