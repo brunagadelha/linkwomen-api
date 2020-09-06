@@ -30,14 +30,24 @@ namespace LinkWomen.Services.Services
             _userRepository.Update(user); 
         }
 
+        public User GetByCPF(string cpf)
+        {
+            return _userRepository.GetAll().Where(x => x.CPF.Equals(cpf)).FirstOrDefault();
+        }
+
+        public User GetByEmail(string email)
+        {
+            return _userRepository.GetAll().Where(x => x.Email.Equals(email)).FirstOrDefault();
+        }
+
         public User GetById(int id)
         {
             return _userRepository.GetById(id);
         }
 
-        public User GetByUserName(string userName)
+        public User GetByUsername(string username)
         {
-            return _userRepository.GetAll().Where(x => x.UserName.Equals(userName)).FirstOrDefault();
+            return _userRepository.GetAll().Where(x => x.UserName.Equals(username)).FirstOrDefault(); 
         }
 
         public IEnumerable<User> GetHighlightedUsers()

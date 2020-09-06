@@ -50,7 +50,7 @@ namespace LinkWomen.WebAPI.Controllers
         [AllowAnonymous]
         public ActionResult Connect(int id)
         {
-            var userAutheticated = _userService.GetByUserName(User.Identity.Name);
+            var userAutheticated = _userService.GetByUsername(User.Identity.Name);
             if (userAutheticated == null)
                 return Unauthorized("Usuário não autenticado");
 
@@ -73,7 +73,7 @@ namespace LinkWomen.WebAPI.Controllers
         [AllowAnonymous]
         public ActionResult Disconnect(int id)
         {
-            var userAutheticated = _userService.GetByUserName(User.Identity.Name);
+            var userAutheticated = _userService.GetByUsername(User.Identity.Name);
             if (userAutheticated == null)
                 return Unauthorized("Usuário não autenticado");
 

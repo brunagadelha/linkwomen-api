@@ -11,8 +11,10 @@ namespace LinkWomen.Services.Services
         void Update(User user); 
         void Delete(User user); 
         User GetById(int id);
-        User GetByUserName(string userName);
         IEnumerable<User> GetHighlightedUsers();
         User VerifyUser(string userName, string password); 
+        User GetByEmail(string email); 
+        User GetByUsername(string username); 
+        User GetByCPF(string cpf); 
     }
 }

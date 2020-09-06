@@ -32,6 +32,9 @@ namespace LinkWomen.WebAPI.Controllers
         [AllowAnonymous]
         public ActionResult<SessionDTO> Post([FromBody] LoginDTO dto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState); 
+
             var user = _userService.VerifyUser(dto.UserName, dto.Password);
 
             if (user == null)

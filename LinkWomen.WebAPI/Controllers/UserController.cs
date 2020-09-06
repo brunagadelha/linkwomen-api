@@ -34,26 +34,41 @@ namespace LinkWomen.WebAPI.Controllers
         [Authorize]
         public ActionResult<UserDTO> Get(int id)
         {
-           var user = _userService.GetById(id);
+            var user = _userService.GetById(id);
 
             if (user == null)
                 return NotFound("Usuário não encontrado");
 
-            return _mapper.Map<UserDTO>(user); 
+            return _mapper.Map<UserDTO>(user);
         }
 
         /// <summary>
         /// Create user
         /// </summary>
-        /// <param name="userDTO"></param>
+        /// <param name="dto"></param>
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Post([FromBody] UserCreateDTO userDTO)
+        public ActionResult Post([FromBody] UserCreateDTO dto)
         {
-            var user = _mapper.Map<User>(userDTO);
+            if (!string.IsNullOrEmpty(dto.Email) && _userService.GetByEmail(dto.Email) != null)
+                ModelState.AddModelError("Email", "Email em uso");
+
+            if (!string.IsNullOrEmpty(dto.CPF) && _userService.GetByCPF(dto.CPF) != null)
+                ModelState.AddModelError("CPF", "CPF em uso");
+
+            if (!string.IsNullOrEmpty(dto.Username) && _userService.GetByUsername(dto.Username) != null)
+                ModelState.AddModelError("Username", "Username em uso");
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var user = _mapper.Map<User>(dto);
             _userService.Add(user);
 
             return NoContent();
+
+
+
         }
 
         /// <summary>
@@ -72,7 +87,7 @@ namespace LinkWomen.WebAPI.Controllers
             if (user == null)
                 return NotFound("Usuário não encontrado");
 
-            user.Bio = bio; 
+            user.Bio = bio;
             _userService.Update(user);
 
             return NoContent();
@@ -116,7 +131,7 @@ namespace LinkWomen.WebAPI.Controllers
         {
             var users = _userService.GetHighlightedUsers();
 
-            return _mapper.Map<IEnumerable<UserHighlightedDTO>>(users); 
+            return _mapper.Map<IEnumerable<UserHighlightedDTO>>(users);
         }
     }
 }

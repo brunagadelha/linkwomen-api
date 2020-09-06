@@ -21,6 +21,10 @@ namespace LinkWomen.Data.Mappings
             builder.Property(x => x.CreatedAt).IsRequired();
             builder.Property(x => x.UserRole).IsRequired();
 
+            builder.HasIndex(x => x.CPF).IsUnique(); 
+            builder.HasIndex(x => x.Email).IsUnique(); 
+            builder.HasIndex(x => x.UserName).IsUnique(); 
+
             builder.Property(x => x.Active).IsRequired();
             builder.Property(x => x.Deleted).IsRequired();
             builder.Property(x => x.IsHighlighted).IsRequired();

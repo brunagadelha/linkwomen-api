@@ -54,7 +54,7 @@ namespace LinkWomen.WebAPI.Controllers
         {
             var entity = _mapper.Map<Event>(dto);
 
-            var user = _userService.GetByUserName(User.Identity.Name);
+            var user = _userService.GetByUsername(User.Identity.Name);
 
             if (user == null)
                 return StatusCode(401, "usuário não autenticado");

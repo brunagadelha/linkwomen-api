@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkWomen.Data.Migrations
 {
     [DbContext(typeof(LinkWomenContext))]
-    [Migration("20200905224620_InsertDefaultTechSkills")]
-    partial class InsertDefaultTechSkills
+    [Migration("20200906180250_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -338,7 +338,16 @@ namespace LinkWomen.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("MentorId");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -425,7 +434,7 @@ namespace LinkWomen.Data.Migrations
             modelBuilder.Entity("LinkWomen.Domain.Models.User", b =>
                 {
                     b.HasOne("LinkWomen.Domain.Models.User", "Mentor")
-                        .WithMany("Mentorados")
+                        .WithMany("Mentorships")
                         .HasForeignKey("MentorId");
                 });
 

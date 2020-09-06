@@ -74,7 +74,7 @@ namespace LinkWomen.WebAPI.Controllers
         [Authorize]
         public ActionResult Post([FromBody] ForumIssueCreateDTO dto)
         {
-            var user = _userService.GetByUserName(User.Identity.Name);
+            var user = _userService.GetByUsername(User.Identity.Name);
             if (user == null)
                 return StatusCode(401, "usuário não autenticado");
 
@@ -143,7 +143,7 @@ namespace LinkWomen.WebAPI.Controllers
         [Authorize]
         public ActionResult PostComment(int id, [FromBody] string comment)
         {
-            var user = _userService.GetByUserName(User.Identity.Name);
+            var user = _userService.GetByUsername(User.Identity.Name);
             if (user == null)
                 return StatusCode(401, "usuário não autenticado");
 

@@ -43,7 +43,8 @@ namespace LinkWomen.Data.Migrations
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: false),
                     Occupation = table.Column<string>(maxLength: 50, nullable: true),
-                    Bio = table.Column<string>(maxLength: 1000, nullable: true),
+                    Bio = table.Column<string>(maxLength: 2000, nullable: true),
+                    PhotoUrl = table.Column<string>(maxLength: 200, nullable: true),
                     UserName = table.Column<string>(maxLength: 20, nullable: false),
                     GitHub = table.Column<string>(maxLength: 200, nullable: true),
                     UserRole = table.Column<int>(nullable: false),
@@ -104,7 +105,7 @@ namespace LinkWomen.Data.Migrations
                     IsPinned = table.Column<bool>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: true),
                     Deleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -115,7 +116,7 @@ namespace LinkWomen.Data.Migrations
                         column: x => x.CategoryId,
                         principalTable: "ForumCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ForumIssues_Users_UserId",
                         column: x => x.UserId,
@@ -204,6 +205,30 @@ namespace LinkWomen.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "TechSkills",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "C" },
+                    { 15, "SQL" },
+                    { 14, "Python" },
+                    { 13, "Go" },
+                    { 12, "Ruby" },
+                    { 11, "Java" },
+                    { 10, "React Native" },
+                    { 16, "MySQL" },
+                    { 9, "Node" },
+                    { 7, "Kotlin" },
+                    { 6, "Objective-C" },
+                    { 5, "Swift" },
+                    { 4, "JavaScript" },
+                    { 3, "C#" },
+                    { 2, "C++" },
+                    { 8, "React" },
+                    { 17, "MongoDB" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Events_UserId",
                 table: "Events",
@@ -240,9 +265,27 @@ namespace LinkWomen.Data.Migrations
                 column: "UserHostId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_CPF",
+                table: "Users",
+                column: "CPF",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_MentorId",
                 table: "Users",
                 column: "MentorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserName",
+                table: "Users",
+                column: "UserName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserTechSkills_TechSkillId",
