@@ -52,6 +52,7 @@ namespace LinkWomen.WebAPI
                 mc.AddProfile(new UserProfile());
                 mc.AddProfile(new EventProfile());
                 mc.AddProfile(new ForumProfile());
+                mc.AddProfile(new TechSkillProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();
@@ -63,6 +64,7 @@ namespace LinkWomen.WebAPI
             services.AddScoped<IForumIssueService, ForumIssueService>();
             services.AddScoped<IForumCommentService, ForumCommentService>();
             services.AddScoped<IUserConnectionService, UserConnectionService>();
+            services.AddScoped<ITechSkillService, TechSkillService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             //Swagger
