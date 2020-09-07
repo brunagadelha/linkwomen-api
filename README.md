@@ -2,7 +2,7 @@
 
 API para o Projeto do **Time 13** para a Mega Hack Women 2020.
 
-[![TIME 13 - VÍDEO PITCH](/assets/images/index-logo.svg)](https://youtu.be/mdtwVH90iWE)
+[![TIME 13 - VÍDEO PITCH]](https://youtu.be/mdtwVH90iWE)
 
 Clique na imagem para assistir ao vídeo pitch!
 
