@@ -13,7 +13,14 @@ namespace LinkWomen.Data.Mappings
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Name).HasMaxLength(100).IsRequired(); 
+            builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+
+            builder.HasData(
+                new ForumCategory() { Id = 1, Name = "Representatividade" },
+                new ForumCategory() { Id = 2, Name = "LGBT+" },
+                new ForumCategory() { Id = 3, Name = "Vagas" },
+                new ForumCategory() { Id = 4, Name = "Tech" }
+                );
         }
     }
 }

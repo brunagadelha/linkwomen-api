@@ -48,7 +48,11 @@ namespace LinkWomen.Services.Services
 
         public ForumIssue GetById(int id)
         {
-            return _forumIssueRepository.GetById(id);
+            return _forumIssueRepository.GetAll()
+                        .Include(x => x.User)
+                        .Include(x => x.Comments)
+                        .ThenInclude(comm => comm.User)
+                    .Where(x => x.Id == id).FirstOrDefault();
         }
 
 

@@ -15,7 +15,7 @@ namespace LinkWomen.WebAPI.AutoMapper.Profiles
             CreateMap<ForumIssue, ForumIssueDTO>()
                 .ForMember(fm => fm.User, mo => mo.MapFrom(x => x.User.Name))
                 .ForMember(fm => fm.Category, mo => mo.MapFrom(x => x.Category != null ? x.Category.Name : null))
-                .ForMember(fm => fm.CreatedAt, mo => mo.MapFrom(x => x.CreatedAt.ToString()));
+                .ForMember(fm => fm.CreatedAt, mo => mo.MapFrom(x => x.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")));
 
             CreateMap<ForumIssueCreateDTO, ForumIssue>(); 
 
@@ -24,7 +24,7 @@ namespace LinkWomen.WebAPI.AutoMapper.Profiles
             CreateMap<ForumComment, ForumCommentDTO>()
                 .ForMember(fm => fm.Content, mo => mo.MapFrom(x => x.Comment))
                 .ForMember(fm => fm.User, mo => mo.MapFrom(x => x.User.Name))
-                .ForMember(fm => fm.CreatedAt, mo => mo.MapFrom(x => x.CreatedAt.ToString()));
+                .ForMember(fm => fm.CreatedAt, mo => mo.MapFrom(x => x.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")));
         }
     }
 }

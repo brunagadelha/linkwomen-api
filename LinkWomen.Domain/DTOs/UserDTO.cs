@@ -15,6 +15,7 @@ namespace LinkWomen.Domain.DTOs
         public string Bio { get; set; }
         public string UserName { get; set; }
         public string GitHub { get; set; }
+        public string PhotoUrl { get; set; }
         public UserRoleEnum UserRole { get; set; }
         public bool Active { get; set; }
         public bool IsHighlighted { get; set; }

@@ -141,7 +141,7 @@ namespace LinkWomen.WebAPI.Controllers
         [HttpPost]
         [Route("{id}/Comment")]
         [Authorize]
-        public ActionResult PostComment(int id, [FromBody] string comment)
+        public ActionResult<ForumCommentDTO> PostComment(int id, [FromBody] string comment)
         {
             var user = _userService.GetByUsername(User.Identity.Name);
             if (user == null)
@@ -160,7 +160,7 @@ namespace LinkWomen.WebAPI.Controllers
 
             _forumCommentService.Add(entity);
 
-            return NoContent();
+            return _mapper.Map<ForumCommentDTO>(entity); 
         }
 
         /// <summary>
